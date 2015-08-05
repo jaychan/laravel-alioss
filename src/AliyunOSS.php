@@ -166,4 +166,30 @@ class AliyunOSS
             return $objectSummary->getKey();
         }, $objectLists->getObjectSummarys());
     }
+
+    /**
+     * Handle dynamic method calls.
+     *
+     * @param string $method
+     * @param array  $parameters
+     *
+     * @return mixed
+     */
+    public function __call($method, $parameters)
+    {
+        return call_user_func_array([$this->client, $method], $parameters);
+    }
+
+    /**
+     * Handle dynamic static method calls.
+     *
+     * @param string $method
+     * @param array  $parameters
+     *
+     * @return mixed
+     */
+    public static function __callStatic($method, $parameters)
+    {
+        return call_user_func_array([$this->client, $method], $parameters);
+    }
 }

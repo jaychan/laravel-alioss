@@ -29,14 +29,17 @@
 ## 使用
 
 ```php
+// 设置Bucket
 AliyunOSS::setBucket('my-bucket');
-AliyunOSS::uploadFile('key', '/path/to/your/file');
-
-// 获取OSSClient
-AliyunOSS::getClient();
+// 上传文件
+AliyunOSS::uploadFile('key', $file = '/path/to/your/file', $bucket = null);
+// 上传内容
+AliyunOSS::uploadContent('key', $content = 'content', $bucket = null);
+// 设置Bucket前缀
+AliyunOSS::setBucketPrefix('prefix_');
+// 获取资源请求URL
+AliyunOSS::getUrl($key, $expire = 3600, $bucket = null);
 ```
-
-> 注意：获取OSSClient后，可以调用更多
 
 ## License
 
