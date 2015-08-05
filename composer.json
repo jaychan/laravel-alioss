@@ -3,6 +3,7 @@
     "description": "阿里云OSS for Laravel",
     "keywords": ["laravel", "alioss", "aliyun", "oss"],
     "require": {
+        "php": ">=5.4.0",
         "listong/ali-oss": "~0.0.4"
     },
     "autoload": {

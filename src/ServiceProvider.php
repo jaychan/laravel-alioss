@@ -22,6 +22,10 @@ class ServiceProvider extends LaravelServiceProvider
         if (array_get($this->app['config'], 'alioss.file_entrance')) {
             $this->addFileEntrance();
         }
+
+        $this->publishes([
+            __DIR__.'/config/alioss.php' => config_path('alioss.php'),
+        ], 'config');
     }
 
     public function register()
@@ -32,10 +36,6 @@ class ServiceProvider extends LaravelServiceProvider
 
             return new AliyunOSS($config);
         });
-
-        $this->publishes([
-            __DIR__.'/config/alioss.php' => config_path('alioss.php'),
-        ]);
     }
 
     /**
