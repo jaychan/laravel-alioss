@@ -16,7 +16,7 @@ class ServiceProvider extends LaravelServiceProvider
     public function boot()
     {
         // 扩展文件系统，增加AliOSS
-        $this->app['filesystem']->extends('alioss', function () {
+        $this->app['filesystem']->extend('alioss', function () {
             return $this->app['filesystem.alioss'];
         });
 

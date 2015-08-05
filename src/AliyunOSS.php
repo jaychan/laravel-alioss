@@ -30,10 +30,14 @@ class AliyunOSS
 
     public function __construct(array $config)
     {
+        $endpoint = array_get($config, 'endpoint', '');
+        if (!starts_with($endpoint, 'http://') || !starts_with($endpoint, 'https://')) {
+            $endpoint = 'http://'.$endpoint;
+        }
         $this->client = OSSClient::factory([
-            OSSOptions::ACCESS_KEY_ID => array_get($config, 'access_id', ''),
-            OSSOptions::ACCESS_KEY_SECRET => array_get($config, 'access_key', ''),
-            OSSOptions::ENDPOINT => array_get($config, 'endpoint', ''),
+            OSSOptions::ACCESS_KEY_ID => array_get($config, 'access_key_id', ''),
+            OSSOptions::ACCESS_KEY_SECRET => array_get($config, 'access_key_secret', ''),
+            OSSOptions::ENDPOINT => $endpoint,
         ]);
         $this->setBucketPrefix(array_get($config, 'bucket_prefix', ''));
     }
@@ -65,7 +69,7 @@ class AliyunOSS
      */
     public function setBucket($bucket)
     {
-        $this->bucket = $this->bucket;
+        $this->bucket = $bucket;
     }
 
     public function getBucket($bucket = null)
@@ -142,7 +146,7 @@ class AliyunOSS
      */
     public function createBucket($bucket)
     {
-        return $this->client->createBucket([OSSOptions::BUCKET => $bucket]);
+        return $this->client->createBucket([OSSOptions::BUCKET => $this->getBucket($bucket)]);
     }
 
     /**
