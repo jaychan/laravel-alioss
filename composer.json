@@ -1,0 +1,26 @@
+{
+    "name": "jaychan/laravel-alioss",
+    "description": "阿里云OSS for Laravel",
+    "keywords": ["laravel", "alioss", "aliyun", "oss"],
+    "require": {
+        "listong/ali-oss": "~0.0.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "JayChan\\Aliyun\\OSS\\": "src/"
+        }
+    },
+    "license": "MIT",
+    "scripts": {
+        "post-install-cmd": [
+            "php artisan vendor:publish  --provider=JayChan\\Aliyun\\OSS\\ServiceProvider"
+        ]
+    },
+    "minimum-stability" : "dev",
+    "authors": [
+        {
+            "name": "jaychan",
+            "email": "voidea@foxmail.com"
+        }
+    ]
+}
