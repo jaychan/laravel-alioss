@@ -2,6 +2,8 @@
 
 namespace JayChan\Aliyun\OSS;
 
+use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
+
 /**
  * 服务提供者.
  *
